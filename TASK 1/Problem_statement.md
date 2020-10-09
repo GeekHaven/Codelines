@@ -1,4 +1,4 @@
-Question : Given a string(consisting of lowercase english alphabets). Find number of prefixes which are also suffixes.
+Given a string (consisting of lowercase english alphabets). Find number of prefixes which are also suffixes.
 
 Prefix : String formed by deleting one or more characters from the end
 Suffix : String formed by deleting one or more characters from start
