@@ -15,5 +15,6 @@ Eg : abbcabb
  	i.e. |new_value - old_value| <= 10
 3. Expected complexity of solution : O(length of string) * log(mod)
 4. Your solution will be judged on Testcases made by us before merging.
+5. Put proper comments and the logic behind that for every changes you make.
 
 NOTE : The corrected code for each task should be submitted in the submission folder for each Task in format. [IIT20xxxx.cpp]
