@@ -10,7 +10,7 @@ Eg : abbcabb
 	
 	Here abb is both prefix and suffix, so answer is 1
 
-Solution of this problem is given in "solution.cpp" file present in Task-1 folder. But there are some bugs in it. You have to identify those bugs and make a PR with the corrected solution.
+Solution of this problem is given in "solution.cpp" file present in Task-1 folder. But there are some errors in it. You have to identify those errors and make a PR with the corrected solution.
 
 1. You can't change the logic or structure of the solution.
 2. If you are changing any of the constants defined(like mod or p), the absolute change should be <=10
