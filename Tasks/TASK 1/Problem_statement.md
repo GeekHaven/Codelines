@@ -13,8 +13,8 @@ Eg : abbcabb
 Solution of this problem is given in "solution.cpp" file present in Task-1 folder. But there are some errors in it. You have to identify those errors and make a PR with the corrected solution.
 
 1. You can't change the logic or structure of the solution.
-2. If you are changing any of the constants defined(like mod or p), the absolute change should be <=10
- 	i.e. |new_value - old_value| <= 10
+2. If you are changing any of the constants defined(like mod or p), the absolute change should be <=100
+ 	i.e. |new_value - old_value| <= 100
 3. Expected complexity of solution : O(length of string * log(mod))
 4. Your solution will be judged on Testcases made by us before merging.
 5. Put proper comments and the logic behind that for every changes you make.
