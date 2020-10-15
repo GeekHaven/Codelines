@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-const long long int mod = (1<<64)+53; //value of mod must be prime (1<<64)+53 is a prime and within constraint.
+const unsigned long long int mod = (1<<64)-59; //value of mod must be prime (1<<64)-59 is a prime and within constraint. use of unsigned to hold large size number.
 const int p=31;      // closest prime number around number of alphabets.
 //takes a string and returns a vector which containts the hash values
 //v[0] = hash(substr(0,1))
@@ -35,16 +35,15 @@ long long binpow(unsigned long long a,unsigned long long b,unsigned long long m)
 
 int main()
 {
-	string str;cin>>str;
+	string str;cin>>str; //in C++ , char* they are constant array of char. we can't define this as const we have to take input from user.
 	
 	vector < long long int> hash_prefix = computeHash(str);
     vector <unsigned long long int> hash_suffix(str.length()-1); // total number of suffix will be str.length()-1
 	
 	for(long long int i=str.length();i>1;i--) // fix some errors to calculate hash_suffix
 	{
-		hash_suffix[str.length()-i] = ((hash_prefix[str.length()-1] - hash_prefix[i-2]) * binpow(binpow(p,i-1,mod),mod- 
-       2,mod))%mod;    // hash_prefix[str.length()-1] will contain whole string hash number , calculating hash_suffix vector by using already calculate hash_prefix vector.
-	}
+		hash_suffix[str.length()-i] = ((hash_prefix[str.length()-1] - hash_prefix[i-2])/binpow(p,i-1,mod))%mod;    // hash_prefix[str.length()-1] will contain whole string hash number , calculating hash_suffix vector by using already calculate hash_prefix vector.
+	} // for finding length of string we will use str.length()
 	map <long long int,long long int> m_prefix;
 	map <long long int,long long int> m_suffix;
 	
