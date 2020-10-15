@@ -43,7 +43,7 @@ int main()
 	for(long long int i=str.length();i>1;i--) // fix some errors to calculate hash_suffix
 	{
 		hash_suffix[str.length()-i] = ((hash_prefix[str.length()-1] - hash_prefix[i-2])/binpow(p,i-1,mod))%mod;    // hash_prefix[str.length()-1] will contain whole string hash number , calculating hash_suffix vector by using already calculate hash_prefix vector.
-	} // for finding length of string we will use str.length()
+	} // for finding length of string we will use str.length() and for avoiding integer overflow we will not find inverse.
 	map <long long int,long long int> m_prefix;
 	map <long long int,long long int> m_suffix;
 	
