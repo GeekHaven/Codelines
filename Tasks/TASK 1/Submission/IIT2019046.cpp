@@ -69,8 +69,10 @@ uint64_t binpow(__uint128_t a,__uint128_t b,__uint128_t m){
 int main()
 {
 	/*
-	 * char *str; was misbehaing while calculating strlen(str)
-	 * i preffered to change it to string str ,and strlen(str) to str.length()
+	 * char *str; will hold the addresss of char 
+	 *strlen(cnst *str) takes null terminated string string as a argument 
+	 * it will give error 
+	 * i preferred to change it to  string str;and strlen(str) to str.length()
 	 * */ 
 	string str;cin>>str;
 	/*
@@ -85,12 +87,34 @@ int main()
 	 * hash_suffix[strlen(str)-i] = ((hash_prefix[i] - hash_prefix[i-1]) * binpow(binpow(p,i,mod),mod-2,mod))%mod;
 	 * to avoid that we used uint128 x to comput under modulo and fit in uint64
 	 * */
-	__uint128_t x;
+	__int128_t x;
+	/*
+	 *we doing reverse calculation with modulo so it hash_prefix[last] - last[last-i]
+	 *can be negative ,so to modulo of negative we do like
+	 *(a-b)%m = (a-b+m)%m;
+	 * if b>a
+	 *
+	 *
+	 * hash[last] = (x0 + x1 +x2 + x3)%m (say)
+	 *hash[i] = (x1)%m(say) 
+	 * then'
+	 * (hash[i] + hashsuffix[i])%m = hash[last]
+	 *
+	 *solving the equation
+	 *hashsuffix[i]  = ((hash[last]%m) - (hash[i]%m))%m
+
+	 *here,
+	 * hash == hashprefix */
+	__uint128_t y;
 	for(long long int i = str.length()-1;i>=0;i--){
-		x = (hash_prefix[str.length() - 1] - hash_prefix[str.length() - i -1]);
-		x *= binpow(binpow(p,str.length()-i,mod),mod-2,mod);
-		x %= mod;
-		hash_suffix[str.length()-i-1] = x;
+		x = hash_prefix[str.length() - 1]%mod;
+		x -=(hash_prefix[str.length() - i -1])%mod;
+		if(x<0)
+			x+=mod;
+		x %=mod;
+		y = x*binpow(binpow(p,str.length()-i,mod),mod-2,mod);
+		y %= mod;
+		hash_suffix[str.length()-i-1] = y;
 	}
 	/* hash_prefix & hash_suffix are uint64*/
 	map <uint64_t,long long int> m_prefix;
@@ -114,6 +138,7 @@ int main()
 		if(f2)
 		ans += f1 * f2;
 	}
+	//cout<<"@@@"<<str.length()<<"\n";
 	cout<<ans<<"\n";
 }
 /* above code was tested on gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
