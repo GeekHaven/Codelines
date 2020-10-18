@@ -69,10 +69,10 @@ uint64_t binpow(__uint128_t a,__uint128_t b,__uint128_t m){
 int main()
 {
 	/*
-	 * char *str; will hold the addresss of char 
-	 *strlen(cnst *str) takes null terminated string string as a argument 
-	 * it will give error 
-	 * i preferred to change it to  string str;and strlen(str) to str.length()
+	 * char *str; is unitialised (!=NULL) it will point to some random location,it will behave as dangling pointer,will give undesired result.
+	 * also strlen() complexity is O(n) ,that will violate the complexity required for question
+	 * while str.length() takes constant time
+	 *i preferred to change it to  string str;and strlen(str) to str.length()
 	 * */ 
 	string str;cin>>str;
 	/*
